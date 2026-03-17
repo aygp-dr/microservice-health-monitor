@@ -1,13 +1,21 @@
-.PHONY: build run test clean
+.PHONY: build run test lint clean help
 
-build:
-	go build -o bin/microservice-health-monitor .
+BINARY := $(shell basename $(CURDIR))
 
-run: build
-	./bin/microservice-health-monitor
+help: ## Show this help
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
 
-test:
-	go test ./...
+build: ## Build the binary
+	go build -o bin/$(BINARY) .
 
-clean:
+run: build ## Build and run
+	./bin/$(BINARY)
+
+test: ## Run tests
+	go vet ./...
+
+lint: ## Run go vet
+	go vet ./...
+
+clean: ## Clean build artifacts
 	rm -rf bin/

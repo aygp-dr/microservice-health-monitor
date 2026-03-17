@@ -1,0 +1,35 @@
+#+TITLE: microservice-health-monitor
+#+STARTUP: overview
+
+* Overview
+
+Observability dashboard for microservices. Terminal UI built with [Bubble Tea](https://github.com/charmbracelet/bubbletea).
+
+* Quick Start
+
+#+begin_src bash
+go run .
+# or
+make build && ./bin/microservice-health-monitor
+#+end_src
+
+* Controls
+
+| Key | Action |
+|-----+--------|
+| j/k | Navigate |
+| Enter | Select/details |
+| q | Quit |
+
+* Development
+
+| Target | Description |
+|--------+-------------|
+| make build | Build binary |
+| make run | Build and run |
+| make test | Run tests |
+| make lint | Run go vet |
+
+* Status
+
+Scaffold — see CLAUDE.md for implementation plan.
